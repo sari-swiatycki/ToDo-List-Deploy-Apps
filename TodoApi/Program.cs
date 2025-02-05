@@ -1,7 +1,5 @@
 using Microsoft.EntityFrameworkCore;
 using TodoApi;
-using Swashbuckle.AspNetCore.SwaggerGen;
-using Swashbuckle.AspNetCore.SwaggerUI;
 using Microsoft.OpenApi.Models;
 var builder = WebApplication.CreateBuilder(args);
 
@@ -77,6 +75,5 @@ app.MapDelete("/tasks/{id}", async (int id, ToDoDbContext context) =>
     return Results.NoContent();
 });
 
-app.MapGet("/", () => "Hello World!");
 app.MapGet("/", () => "TodoApi is running");
 app.Run();
