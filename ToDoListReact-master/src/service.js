@@ -1,8 +1,6 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = "http://localhost:5080"
-
-
+axios.defaults.baseURL = process.env.API_URL
 axios.interceptors.response.use(
   response => response, // מחזיר את התגובה כרגיל אם אין שגיאה
   error => {

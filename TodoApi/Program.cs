@@ -9,7 +9,6 @@ builder.Services.AddDbContext<ToDoDbContext>(options =>
     options.UseMySql("server=localhost;user=root;password=Diti327770038!;database=ToDoDB",
     Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.41-mysql")));
 
-
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
 {
@@ -20,14 +19,6 @@ builder.Services.AddSwaggerGen(options =>
         Description = "A simple ToDo API to manage tasks."
     });
 });
-
-
-
-
-
-
-
-
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowSpecificOrigins", policy =>
@@ -89,5 +80,5 @@ app.MapDelete("/tasks/{id}", async (int id, ToDoDbContext context) =>
 });
 
 app.MapGet("/", () => "Hello World!");
-
+app.MapGet("/", () => "TodoApi is running");
 app.Run();
