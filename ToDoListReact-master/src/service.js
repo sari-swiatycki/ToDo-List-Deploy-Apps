@@ -26,13 +26,13 @@ export default {
     },
   addTask: async (name) => {
     console.log('addTask', name)
-    const res = await axios.post('/tasks', { name });
+    const res = await axios.post('/tasks', {name: name, isComplete:false });
     return res.data;
   },
 
   setCompleted: async (id, isComplete) => {
     console.log('setCompleted', { id, isComplete })
-    const res = await axios.put(`/tasks/${id}`, { isComplete });
+    const res = await axios.put(`/tasks/${id}`, { isComplete:isComplete });
     return res.data;
   },
 
