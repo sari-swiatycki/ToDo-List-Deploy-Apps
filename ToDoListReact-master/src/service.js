@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = process.env.API_URL
+
+axios.defaults.baseURL = process.env.REACT_APP_API_URL;
 axios.interceptors.response.use(
   response => response, // מחזיר את התגובה כרגיל אם אין שגיאה
   error => {
@@ -26,7 +27,9 @@ export default {
     },
   addTask: async (name) => {
     console.log('addTask', name)
-    const res = await axios.post('/tasks', {name: name, isComplete:false });
+    
+
+    const res = await axios.post('/tasks', { Name:name , isComplete:false });
     return res.data;
   },
 
