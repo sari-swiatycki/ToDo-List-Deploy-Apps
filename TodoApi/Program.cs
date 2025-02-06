@@ -43,7 +43,7 @@ app.UseCors("AllowSpecificOrigins");
 
 app.MapGet("/tasks", async (ToDoDbContext context) =>
 {
-    var tasks = await context.Items.ToListAsync();
+    var tasks = await context.items.ToListAsync();
     return tasks.Any() ? Results.Ok(tasks) : Results.NoContent();
 });
 
