@@ -50,7 +50,7 @@ app.MapGet("/tasks", async (ToDoDbContext context) =>
 // הוספת משימה חדשה
 app.MapPost("/tasks", async (ToDoDbContext context, Item newTask) =>
 {
-    context.Items.Add(newTask);
+    context.items.Add(newTask);
     await context.SaveChangesAsync();
     return Results.Created($"/tasks/{newTask.Id}", newTask);
 });
@@ -58,7 +58,7 @@ app.MapPost("/tasks", async (ToDoDbContext context, Item newTask) =>
 // עדכון משימה
 app.MapPut("/tasks/{id}", async (int id, ToDoDbContext context, Item updatedTask) =>
 {
-    var task = await context.Items.FindAsync(id);
+    var task = await context.items.FindAsync(id);
     if (task == null) return Results.NotFound();
     task.IsComplete = updatedTask.IsComplete;
     await context.SaveChangesAsync();
@@ -68,9 +68,9 @@ app.MapPut("/tasks/{id}", async (int id, ToDoDbContext context, Item updatedTask
 // מחיקת משימה
 app.MapDelete("/tasks/{id}", async (int id, ToDoDbContext context) =>
 {
-    var task = await context.Items.FindAsync(id);
+    var task = await context.items.FindAsync(id);
     if (task == null) return Results.NotFound();
-    context.Items.Remove(task);
+    context.items.Remove(task);
     await context.SaveChangesAsync();
     return Results.NoContent();
 });
