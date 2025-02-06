@@ -12,6 +12,8 @@ builder.Services.AddDbContext<ToDoDbContext>(options =>
     Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.41-mysql")));
 
 builder.Services.AddEndpointsApiExplorer();
+
+
 builder.Services.AddSwaggerGen(options =>
 {
     options.SwaggerDoc("v1", new OpenApiInfo
@@ -32,6 +34,8 @@ builder.Services.AddCors(options =>
 });
 
 var app = builder.Build();
+// הפעלת מדיניות CORS
+app.UseCors("AllowSpecificOrigins");
 app.UseSwagger();
 
 // הפעלת Swagger UI
@@ -42,8 +46,7 @@ app.UseSwaggerUI(options =>
 });
 
 
-// הפעלת מדיניות CORS
-app.UseCors("AllowSpecificOrigins");
+
 
 app.MapGet("/tasks", async (ToDoDbContext context) =>
 {
