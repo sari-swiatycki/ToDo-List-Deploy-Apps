@@ -77,3 +77,21 @@ app.MapDelete("/tasks/{id}", async (int id, ToDoDbContext context) =>
 
 app.MapGet("/", () => "TodoApi is running");
 app.Run();
+
+
+
+
+
+//בדיקה על החיבור
+app.MapGet("/test-db", async (ToDoDbContext context) =>
+{
+    try
+    {
+        var anyItem = await context.items.FirstOrDefaultAsync();
+        return Results.Ok(anyItem != null ? "Database Connected ✅" : "Database Connected but Empty ⚠️");
+    }
+    catch (Exception ex)
+    {
+        return Results.Problem($"Database Connection Error: {ex.Message}");
+    }
+});
