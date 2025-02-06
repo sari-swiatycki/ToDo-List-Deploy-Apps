@@ -8,7 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 
 builder.Services.AddDbContext<ToDoDbContext>(options =>
-        options.UseMySql(builder.Configuration.GetConnectionString("ToDoDB"),
+    options.UseMySql(builder.Configuration.GetConnectionString("ToDoDB"),
     Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.41-mysql")));
 
 builder.Services.AddEndpointsApiExplorer();
@@ -26,8 +26,8 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowSpecificOrigins", policy =>
     {
         policy.AllowAnyOrigin()
-              .AllowAnyMethod() 
-              .AllowAnyHeader(); 
+              .AllowAnyMethod()
+              .AllowAnyHeader();
     });
 });
 
@@ -38,7 +38,7 @@ app.UseSwagger();
 app.UseSwaggerUI(options =>
 {
     options.SwaggerEndpoint("/swagger/v1/swagger.json", "ToDo API v1");
-    options.RoutePrefix = string.Empty;  
+    options.RoutePrefix = string.Empty;
 });
 
 
