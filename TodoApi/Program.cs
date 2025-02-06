@@ -1,10 +1,14 @@
 using Microsoft.EntityFrameworkCore;
 using TodoApi;
 using Microsoft.OpenApi.Models;
+using Swashbuckle.AspNetCore.SwaggerGen;
+using Swashbuckle.AspNetCore.SwaggerUI;
 var builder = WebApplication.CreateBuilder(args);
 
+
+
 builder.Services.AddDbContext<ToDoDbContext>(options =>
-    options.UseMySql("server=localhost;user=root;password=Diti327770038!;database=ToDoDB",
+        options.UseMySql(builder.Configuration.GetConnectionString("ToDoDB"),
     Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.41-mysql")));
 
 builder.Services.AddEndpointsApiExplorer();
