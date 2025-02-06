@@ -29,7 +29,7 @@ export default {
     console.log('addTask', name)
     
 
-    const res = await axios.post('/tasks', { Name:name , isComplete:false });
+    const res = await axios.post('/tasks', { name:name , isComplete:false });
     return res.data;
   },
 
