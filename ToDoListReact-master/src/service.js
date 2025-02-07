@@ -2,6 +2,7 @@ import axios from 'axios';
 
 
 axios.defaults.baseURL = process.env.REACT_APP_API_URL;
+console.log("API Base URL:", process.env.REACT_APP_API_URL);
 axios.interceptors.response.use(
   response => response, // מחזיר את התגובה כרגיל אם אין שגיאה
   error => {
