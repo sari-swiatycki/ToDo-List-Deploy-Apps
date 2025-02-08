@@ -56,7 +56,7 @@ app.MapGet("/tasks", async (ToDoDbContext context) =>
 // הוספת משימה חדשה
 app.MapPost("/tasks", async (ToDoDbContext context, Item newTask) =>
 {
-    context.Items.Add(newTask);
+    context.Items.Add(newTask);   
     await context.SaveChangesAsync();
     return Results.Created($"/tasks/{newTask.Id}", newTask);
 });

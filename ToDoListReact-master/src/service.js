@@ -15,7 +15,6 @@ axios.interceptors.response.use(
 
 export default {
   getTasks: async () => {  
-      console.log("API Base URL:", process.env.REACT_APP_API_URL);
       const result = await axios.get('/tasks');
       if (Array.isArray(result.data))
         return result.data
