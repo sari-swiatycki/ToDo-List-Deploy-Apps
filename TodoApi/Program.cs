@@ -12,15 +12,15 @@ builder.Services.AddDbContext<ToDoDbContext>(options =>
 builder.Services.AddEndpointsApiExplorer();
 
 
-builder.Services.AddSwaggerGen(options =>
-{
-    options.SwaggerDoc("v1", new OpenApiInfo
-    {
-        Title = "ToDo API",
-        Version = "v1",
-        Description = "A simple ToDo API to manage tasks."
-    });
-});
+// builder.Services.AddSwaggerGen(options =>
+// {
+//     options.SwaggerDoc("v1", new OpenApiInfo
+//     {
+//         Title = "ToDo API",
+//         Version = "v1",
+//         Description = "A simple ToDo API to manage tasks."
+//     });
+// });
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowSpecificOrigins", policy =>
